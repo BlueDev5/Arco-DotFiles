@@ -11,8 +11,9 @@ My Dotfiles of Arco Linux
 7. Spotify
 8. nitrogen
 9. neofetch
-10. Thunar(optional)
-11. vscode (optional)
+10. Spicetify
+11. Thunar(optional)
+12. vscode (optional)
 
 ## Vscode Extensions
 To add the extensions, rename the folder to extensions and copy it to ~/.vscode/.
