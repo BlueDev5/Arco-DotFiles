@@ -23,3 +23,6 @@ To apply the lightdm copy the files in lightDM folder to /etc/LightDM/
 
 ## Config
 To apply configs copy the folders in .config folder to ~/.config.
+
+## Backgrounds
+Copy the backgrounds folder to /usr/share/. The background I use is background24.jpg (Arco-Linux-sddm-backgrounds/background24.jpg)
