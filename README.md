@@ -1,7 +1,7 @@
 # Arco-DotFiles
 My Dotfiles of Arco Linux
 
-##Pre-Requisites
+## Pre-Requisites
 1. Htop
 2. LightDM
 3. lightdm-webkit2-greeter
