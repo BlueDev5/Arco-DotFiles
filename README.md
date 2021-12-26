@@ -16,3 +16,9 @@ My Dotfiles of Arco Linux
 
 ## Vscode Extensions
 To add the extensions, rename the folder to extensions and copy it to ~/.vscode/.
+
+## LightDM
+To apply the lightdm copy the files in lightDM folder to /etc/LightDM/
+
+## Config
+To apply configs copy the folders in .config folder to ~/.config.
