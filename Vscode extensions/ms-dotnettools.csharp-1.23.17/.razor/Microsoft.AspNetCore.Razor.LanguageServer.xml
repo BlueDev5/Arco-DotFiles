@@ -1,0 +1,570 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AspNetCore.Razor.LanguageServer</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.CodeActions.AddUsingsCodeActionProviderFactory.TryExtractNamespace(System.String,System.String@)">
+            <summary>
+            Extracts the namespace from a C# add using statement provided by Visual Studio
+            </summary>
+            <param name="csharpAddUsing">Add using statement of the form `using System.X;`</param>
+            <param name="namespace">Extract namespace `System.X`</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.LanguageServer.CodeActions.AddUsingsCSharpCodeActionResolver">
+            <summary>
+            Resolves the C# Add Using Code Action by requesting edits from Roslyn
+            and converting them to be Razor compatible.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.LanguageServer.CodeActions.UnformattedRemappingCSharpCodeActionResolver">
+            <summary>
+            Resolves and remaps the code action, without running formatting passes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.CodeActions.Models.RazorCodeAction.Children">
+            <summary>
+            Typically null, only present in VS scenarios.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.CodeActions.Models.RazorCodeAction.Name">
+            <summary>
+            Used internally by the Razor Language Server to store the Code Action name extracted
+            from the Data.CustomTags payload.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.CodeActions.ExtractToCodeBehindCodeActionResolver.GenerateCodeBehindPath(System.String)">
+            <summary>
+            Generate a file path with adjacent to our input path that has the
+            correct codebehind extension, using numbers to differentiate from
+            any collisions.
+            </summary>
+            <param name="path">The origin file path.</param>
+            <returns>A non-existent file path with the same base name and a codebehind extension.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.CodeActions.ExtractToCodeBehindCodeActionResolver.FindUsings(Microsoft.AspNetCore.Razor.Language.RazorCodeDocument)">
+            <summary>
+            Determine all explicit and implicit using statements in the code
+            document using the intermediate node.
+            </summary>
+            <param name="razorCodeDocument">The code document to analyze.</param>
+            <returns>An enumerable of the qualified namespaces.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.CodeActions.ExtractToCodeBehindCodeActionResolver.GenerateCodeBehindClass(System.String,System.String,Microsoft.AspNetCore.Razor.Language.RazorCodeDocument)">
+            <summary>
+            Generate a complete C# compilation unit containing a partial class
+            with the given name, body contents, and the namespace and all
+            usings from the existing code document.
+            </summary>
+            <param name="className">Name of the resultant partial class.</param>
+            <param name="contents">Class body contents.</param>
+            <param name="razorCodeDocument">Existing code document we're extracting from.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.LanguageServer.Completion.VSCompletionItem">
+            <summary>
+            VS-specific completion item based off of LSP's VSCompletionItem.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.LanguageServer.Completion.VSCompletionList">
+            <summary>
+            A subclass of the LSP protocol <see cref="T:OmniSharp.Extensions.LanguageServer.Protocol.Models.CompletionList"/> that contains extensions specific to Visual Studio.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Completion.VSCompletionList.CommitCharacters">
+            <summary>
+            Gets or sets the default <see cref="P:OmniSharp.Extensions.LanguageServer.Protocol.Models.CompletionItem.CommitCharacters"/> used for completion items.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Completion.VSCompletionList.Data">
+            <summary>
+            Gets or sets the default <see cref="P:OmniSharp.Extensions.LanguageServer.Protocol.Models.CompletionItem.Data"/> used for completion items.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Completion.VSCompletionListCapability.CommitCharacters">
+            <summary>
+            Gets or sets a value indicating whether completion lists can have VSCommitCharacters. These commit characters get propagated
+            onto underlying valid completion items unless they have their own commit characters.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Completion.VSCompletionListCapability.Data">
+            <summary>
+            Gets or sets a value indicating whether completion lists can have Data bags. These data bags get propagated
+            onto underlying completion items unless they have their own data bags.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.DefaultClientNotifierService.OnStarted(OmniSharp.Extensions.LanguageServer.Protocol.Server.ILanguageServer,System.Threading.CancellationToken)">
+            <summary>
+            Fires when the language server is set to "Started".
+            </summary>
+            <param name="server"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.DefaultRazorComponentSearchEngine.TryLocateComponentAsync(Microsoft.AspNetCore.Razor.Language.TagHelperDescriptor)">
+            <summary>Search for a component in a project based on its tag name and fully qualified name.</summary>
+            <remarks>
+            This method makes several assumptions about the nature of components. First, it assumes that a component
+            a given name `Name` will be located in a file `Name.razor`. Second, it assumes that the namespace the
+            component is present in has the same name as the assembly its corresponding tag helper is loaded from.
+            Implicitly, this method inherits any assumptions made by TrySplitNamespaceAndType.
+            </remarks>
+            <param name="tagHelper">A TagHelperDescriptor to find the corresponding Razor component for.</param>
+            <returns>The corresponding DocumentSnapshot if found, null otherwise.</returns>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnostic.Projects">
+            <summary>
+            Gets or sets the project and context (e.g. Win32, MacOS, etc.) in which the diagnostic was generated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnostic.ExpandedMessage">
+            <summary>
+            Gets or sets an expanded description of the diagnostic.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnostic.ToolTip">
+            <summary>
+            Gets or sets a message shown when the user hovers over an error. If null, then message
+            is used (use <see cref="F:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticTags.SuppressEditorToolTip"/> to prevent a tool tip from being shown).
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnostic.Identifier">
+            <summary>
+            Gets or sets some non-human readable identifier so that two diagnostics that are
+            equivalent (e.g.a syntax error in both a build for Win32 and MacOs) can be consolidated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnostic.DiagnosticType">
+            <summary>
+            Gets or sets a string describing the diagnostic types (e.g. Security, Performance, Style, ...).
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnostic.DiagnosticRank">
+            <summary>
+            Gets or sets a rank associated with this diagnostic, used for the default sort.
+            Default == 300 will be used if no rank is specified.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnostic.OutputId">
+            <summary>
+            Gets or sets an ID used to associate this diagnostic with a corresponding line in the output window.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticRank">
+            <summary>
+            Enum which represents the rank of a diagnostic.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticRank.Highest">
+            <summary>
+            Highest priority.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticRank.High">
+            <summary>
+            High priority.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticRank.Default">
+            <summary>
+            Default priority.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticRank.Low">
+            <summary>
+            Low priority.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticRank.Lowest">
+            <summary>
+            Lowest priority.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticTag">
+            <summary>
+            Diagnostic tag enum.
+            Additional metadata about the type of a diagnostic
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticTag.Unnecessary">
+            <summary>
+            Unused or unnecessary code.
+            Diagnostics with this tag are rendered faded out.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticTag.Deprecated">
+            <summary>
+            Deprecated or obsolete code.
+            Clients are allowed to rendered diagnostics with this tag strike through.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticTags">
+            <summary>
+            Class which contains constant casted values for VS specific DiagnosticTags.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticTags.BuildError">
+            <summary>
+            Error coming from the build.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticTags.IntellisenseError">
+            <summary>
+            Error coming from Intellisense.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticTags.PotentialDuplicate">
+             <summary>
+             Diagnostic that could be generated from both builds and
+             Intellisense.
+            
+             Diagnostics tagged with PotentialDuplicate will be hidden
+             in the error list if:
+                 The error list is displaying build and intellisense errors.
+                 The identifier property the containing DiagnosticReport
+                 matches the supersedes property of another report for the
+                 same document.
+            
+             The latter condition (by itself) will also causes Diagnostics
+             tagged with the PotentialDuplicate tag to be hidden in the editor.
+             </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticTags.HiddenInErrorList">
+            <summary>
+            Diagnostic is never displayed in the error list.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticTags.VisibleInErrorList">
+            <summary>
+            Diagnostic is always displayed in the error list.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticTags.HiddenInEditor">
+            <summary>
+            Diagnostic is never displayed in the editor.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticTags.SuppressEditorToolTip">
+            <summary>
+            No tooltip is shown for the diagnostic in the editor.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSDiagnosticTags.EditAndContinueError">
+            <summary>
+            Diagnostic is represented in Editor as an EnC error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSProjectAndContext.ProjectName">
+            <summary>
+            Gets or sets a human-readable identifier for the project in which the diagnostic was generated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSProjectAndContext.Context">
+            <summary>
+            Gets or sets a human-readable identifier for the build context (e.g. Win32 or MacOS)
+            in which the diagnostic was generated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Diagnostics.OmniSharpVSProjectAndContext.ProjectIdentifier">
+            <summary>
+            Gets or sets the unique identifier for the project in which the diagnostic was generated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.Formatting.FormattingContext.GetIndentationLevelString(System.Int32)">
+            <summary>
+            Generates a string of indentation based on a specific indentation level. For instance, inside of a C# method represents 1 indentation level. A method within a class would have indentaiton level of 2 by default etc.
+            </summary>
+            <param name="indentationLevel">The indentation level to represent</param>
+            <returns>A whitespace string representing the indentation level based on the configuration.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.Formatting.FormattingContext.GetIndentationString(System.Int32)">
+            <summary>
+            Given a <paramref name="indentation"/> amount of characters, generate a string representing the configured indentation.
+            </summary>
+            <param name="indentation">An amount of characters to represent the indentation</param>
+            <returns>A whitespace string representation indentation.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.Formatting.FormattingContext.GetIndentationLevelForOffset(System.Int32)">
+            <summary>
+            Given an offset return the corresponding indent level.
+            </summary>
+            <param name="offset">A value represents the number of spaces/tabs at the start of a line.</param>
+            <returns>The corresponding indent level.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.Formatting.FormattingContext.GetIndentationOffsetForLevel(System.Int32)">
+            <summary>
+            Given a level, returns the corresponding offset.
+            </summary>
+            <param name="level">A value representing the indentation level.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.Formatting.FormattingContext.ValidateComponents(Microsoft.AspNetCore.Razor.Language.RazorCodeDocument,Microsoft.AspNetCore.Razor.Language.RazorCodeDocument)">
+            <summary>
+            It can be difficult in the testing infrastructure to correct constructs input files that work consistently across
+            context changes, so this method validates that the number of components isn't changing due to lost tag help info.
+            Without this guarantee its hard to reason about test behaviour/failures.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Formatting.IndentationContext.ExistingIndentation">
+            <summary>
+            The number of characters of indentation there are on this line
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Formatting.IndentationContext.ExistingIndentationSize">
+            <summary>
+            The amount of visual indentation there is on this line, taking into account tab size
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.MappingBehavior.Inclusive">
+             <summary>
+             Inclusive mapping behavior will attempt to map overlapping or intersecting generated ranges with a provided projection range.
+            
+             Behavior:
+                 - Overlaps > 1 generated range = No mapping
+                 - Intersects > 1 generated range = No mapping
+                 - Overlaps 1 generated range = Will reduce the provided range down to the generated range.
+                 - Intersects 1 generated range = Will use the generated range mappings
+             </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.LanguageServer.PlatformAgnosticClientCapabilities">
+            <summary>
+            These client capabilities represent the superset of client capabilities from VS and VSCode.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.LanguageServer.Semantic.Models.RazorSemanticTokensEdit">
+            <summary>
+            Used to transport edit information from the Razor client to Razor server.
+            We avoid using O#'s pre-existing SemanticTokensEdit since it uses ImmutableArrays
+            and we don't want to deal with the overhead of creating those.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.Semantic.Models.RazorSemanticTokensEdit.#ctor(System.Int32,System.Int32,System.Int32[])">
+            <summary>
+            Used to transport edit information from the Razor client to Razor server.
+            We avoid using O#'s pre-existing SemanticTokensEdit since it uses ImmutableArrays
+            and we don't want to deal with the overhead of creating those.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.Semantic.DefaultRazorSemanticTokensInfoService.GetData(Microsoft.AspNetCore.Razor.LanguageServer.Semantic.SemanticRange,Microsoft.AspNetCore.Razor.LanguageServer.Semantic.SemanticRange,Microsoft.AspNetCore.Razor.Language.RazorCodeDocument)">
+                     * In short, each token takes 5 integers to represent, so a specific token `i` in the file consists of the following array indices:
+                     *  - at index `5*i`   - `deltaLine`: token line number, relative to the previous token
+                     *  - at index `5*i+1` - `deltaStart`: token start character, relative to the previous token (relative to 0 or the previous token's start if they are on the same line)
+                     *  - at index `5*i+2` - `length`: the length of the token. A token cannot be multiline.
+                     *  - at index `5*i+3` - `tokenType`: will be looked up in `SemanticTokensLegend.tokenTypes`
+                     *  - at index `5*i+4` - `tokenModifiers`: each set bit will be looked up in `SemanticTokensLegend.tokenModifiers`
+                    *
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Serialization.PlatformExtensionConverter`2.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.Serialization.PlatformExtensionConverter`2.CanConvert(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.Serialization.PlatformExtensionConverter`2.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.Serialization.PlatformExtensionConverter`2.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.SourceTextExtensions.GetEncompassingTextChangeRange(Microsoft.CodeAnalysis.Text.SourceText,Microsoft.CodeAnalysis.Text.SourceText)">
+            <summary>
+            Gets the minimal range of text that changed between the two versions.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.LanguageServer.Tooltip.VSClassifiedTextElement">
+            <summary>
+            Equivalent to VS' ClassifiedTextElement. The class has been adapted here so we
+            can use it for LSP serialization since we don't have access to the VS version.
+            Refer to original class for additional details.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.LanguageServer.Tooltip.VSClassifiedTextRun">
+            <summary>
+            Equivalent to VS' ClassifiedTextRun. The class has been adapted here so we
+            can use it for LSP serialization since we don't have access to the VS version.
+            Refer to original class for additional details.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.LanguageServer.Tooltip.VSClassifiedTextRunStyle">
+            <summary>
+            Equivalent to VS' ClassifiedTextRunStyle. The class has been adapted here so we
+            can use it for LSP serialization since we don't have access to the VS version.
+            Refer to original class for additional details.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.LanguageServer.Tooltip.VSContainerElement">
+            <summary>
+            Equivalent to VS' ContainerElement. The class has been adapted here so we can
+            use it for LSP serialization since we don't have access to the VS version.
+            Refer to original class for additional details.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.LanguageServer.Tooltip.VSContainerElementStyle">
+            <summary>
+            Equivalent to VS' ContainerElementStyle. The class has been adapted here so we
+            can use it for LSP serialization since we don't have access to the VS version.
+            Refer to original class for additional details.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.LanguageServer.Tooltip.VSImageElement">
+            <summary>
+            Equivalent to VS' ImageElement. The class has been adapted here so we can
+            use it for LSP serialization since we don't have access to the VS version.
+            Refer to original class for additional details.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.LanguageServer.Tooltip.VSImageId">
+            <summary>
+            Equivalent to VS' ContainerElementStyle. The class has been adapted here so we
+            can use it for LSP serialization since we don't have access to the VS version.
+            Refer to original class for additional details.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.RazorLS.Resources.Blazor_directive_attributes">
+            <summary>Blazor directive attributes</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.RazorLS.Resources.Create_Component_FromTag_Title">
+            <summary>Create component from tag</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.RazorLS.Resources.ExtractTo_CodeBehind_Title">
+            <summary>Extract block to code behind</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.RazorLS.Resources.Invalid_Offset">
+            <summary>Invalid offset.</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.RazorLS.Resources.PositionIndex_Outside_Range">
+            <summary>Line '{0}' outside of the {1} range of '{2}' was queried. The document may not be up to date.</summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.RazorLS.Resources.FormatPositionIndex_Outside_Range(System.Object,System.Object,System.Object)">
+            <summary>Line '{0}' outside of the {1} range of '{2}' was queried. The document may not be up to date.</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.RazorLS.Resources.ReTrigger_Completions_Title">
+            <summary>"Re-trigger completions..."</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.RazorLS.Resources.TagHelper_Attribute_Glyph">
+            <summary>Razor TagHelper Attribute Glyph</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.RazorLS.Resources.TagHelper_Element_Glyph">
+            <summary>Razor TagHelper Element Glyph</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.RazorLS.Resources.Unknown_mapping_behavior">
+            <summary>Unknown mapping behavior</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.RazorLS.Resources.Unknown_RazorMetaCode">
+            <summary>Attempted to visit a RazorMetaCode other than '{' or '}'.</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.RazorLS.Resources.Version_Should_Not_Be_Null">
+            <summary>Provided version should not be null.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.AllowNullAttribute">
+            <summary>Specifies that null is allowed as an input even if the corresponding type disallows it.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DisallowNullAttribute">
+            <summary>Specifies that null is disallowed as an input even if the corresponding type allows it.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullAttribute">
+            <summary>Specifies that an output may be null even if the corresponding type disallows it.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullAttribute">
+            <summary>Specifies that an output will not be null even if the corresponding type allows it.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute">
+            <summary>Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue"/>, the parameter may be null even if the corresponding type disallows it.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)">
+            <summary>Initializes the attribute with the specified return value condition.</summary>
+            <param name="returnValue">
+            The return value condition. If the method returns this value, the associated parameter may be null.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue">
+            <summary>Gets the return value condition.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
+            <summary>Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue"/>, the parameter will not be null even if the corresponding type allows it.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)">
+            <summary>Initializes the attribute with the specified return value condition.</summary>
+            <param name="returnValue">
+            The return value condition. If the method returns this value, the associated parameter will not be null.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue">
+            <summary>Gets the return value condition.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute">
+            <summary>Specifies that the output will be non-null if the named parameter is non-null.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)">
+            <summary>Initializes the attribute with the associated parameter name.</summary>
+            <param name="parameterName">
+            The associated parameter name.  The output will be non-null if the argument to the parameter specified is non-null.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.ParameterName">
+            <summary>Gets the associated parameter name.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DoesNotReturnAttribute">
+            <summary>Applied to a method that will never return under any circumstance.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute">
+            <summary>Specifies that the method will not return if the associated Boolean parameter is passed the specified value.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)">
+            <summary>Initializes the attribute with the specified parameter value.</summary>
+            <param name="parameterValue">
+            The condition parameter value. Code after the method will be considered unreachable by diagnostics if the argument to
+            the associated parameter matches this value.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.ParameterValue">
+            <summary>Gets the condition parameter value.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute">
+            <summary>Specifies that the method or property will ensure that the listed field and property members have not-null values.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String)">
+            <summary>Initializes the attribute with a field or property member.</summary>
+            <param name="member">
+            The field or property member that is promised to be not-null.
+            </param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String[])">
+            <summary>Initializes the attribute with the list of field and property members.</summary>
+            <param name="members">
+            The list of field and property members that are promised to be not-null.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.Members">
+            <summary>Gets field or property member names.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute">
+            <summary>Specifies that the method or property will ensure that the listed field and property members have not-null values when returning with the specified return value condition.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String)">
+            <summary>Initializes the attribute with the specified return value condition and a field or property member.</summary>
+            <param name="returnValue">
+            The return value condition. If the method returns this value, the associated parameter will not be null.
+            </param>
+            <param name="member">
+            The field or property member that is promised to be not-null.
+            </param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String[])">
+            <summary>Initializes the attribute with the specified return value condition and list of field and property members.</summary>
+            <param name="returnValue">
+            The return value condition. If the method returns this value, the associated parameter will not be null.
+            </param>
+            <param name="members">
+            The list of field and property members that are promised to be not-null.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.ReturnValue">
+            <summary>Gets the return value condition.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.Members">
+            <summary>Gets field or property member names.</summary>
+        </member>
+    </members>
+</doc>

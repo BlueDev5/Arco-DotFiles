@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.CodeAnalysis.Razor.Workspaces</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.CodeAnalysis.Razor.Workspaces.LSPEditorFeatureDetector.IsRemoteClient">
+            <summary>
+            A remote client is a LiveShare guest or a Codespaces instance
+            </summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.Razor.Workspaces.Resources.ArgumentCannotBeNullOrEmpty">
+            <summary>Value cannot be null or an empty string.</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.Razor.Workspaces.Resources.ForegroundDispatcher_AssertBackgroundThread">
+            <summary>{0} must be called on a background thread.</summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Razor.Workspaces.Resources.FormatForegroundDispatcher_AssertBackgroundThread(System.Object)">
+            <summary>{0} must be called on a background thread.</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.Razor.Workspaces.Resources.ForegroundDispatcher_AssertForegroundThread">
+            <summary>{0} must be called on the foreground thread.</summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Razor.Workspaces.Resources.FormatForegroundDispatcher_AssertForegroundThread(System.Object)">
+            <summary>{0} must be called on the foreground thread.</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.Razor.Workspaces.Resources.ForegroundDispatcher_NoMethodNamePlaceholder">
+            <summary>The method</summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Razor.ProjectSystem.ProjectSnapshot.GetRelatedDocuments(Microsoft.CodeAnalysis.Razor.ProjectSystem.DocumentSnapshot)">
+            <summary>
+            If the provided document is an import document, gets the other documents in the project
+            that include directives specified by the provided document. Otherwise returns an empty
+            list.
+            </summary>
+            <param name="document">The document.</param>
+            <returns>A list of related documents.</returns>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.Razor.ProjectSystem.ProjectState.Version">
+            <summary>
+            Gets the version of this project, INCLUDING content changes. The <see cref="P:Microsoft.CodeAnalysis.Razor.ProjectSystem.ProjectState.Version"/> is
+            incremented for each new <see cref="T:Microsoft.CodeAnalysis.Razor.ProjectSystem.ProjectState"/> instance created.
+            </summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.Razor.ProjectSystem.ProjectState.DocumentCollectionVersion">
+            <summary>
+            Gets the version of this project, NOT INCLUDING computed or content changes. The
+            <see cref="P:Microsoft.CodeAnalysis.Razor.ProjectSystem.ProjectState.DocumentCollectionVersion"/> is incremented each time the configuration changes or
+            a document is added or removed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.Razor.ProjectSystem.ProjectState.ProjectWorkspaceStateVersion">
+            <summary>
+            Gets the version of this project based on the project workspace state, NOT INCLUDING content
+            changes. The computed state is guaranteed to change when the configuration or tag helpers
+            change.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Razor.Serialization.Internal.StringCache">
+            <summary>
+            This class helps de-duplicate dynamically created strings which might otherwise lead to memory bloat.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Razor.Serialization.Internal.StringCache.ExfiltratingEqualityComparer">
+            <summary>
+            This is a gross hack to do a sneaky and get the value inside the HashSet out given the lack of any Get operations in netstandard2.0.
+            If we ever upgrade to 2.1 delete this and just use the built in TryGetValue method.
+            </summary>
+            <remarks>
+            This is fragile on the ordering of the values passed to the EqualityComparer by HashSet.
+            If that ever switches we have to react, if it becomes indeterminate we have to abandon this strategy.
+            </remarks>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,8 @@
+.DS_Store
+.vscode/spellright.dict
+HOWTO-publish.md
+.vscode/tasks.json
+node_modules/
+.vsixmanifest
+vsc-todo-highlight.code-workspace
+todo-highlight.code-workspace

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AspNetCore.Razor.LanguageServer.Common</name>
+    </assembly>
+    <members>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Common.LanguageServerConstants.CodeActions.UnformattedRemap">
+            <summary>
+            Remaps without formatting the resolved code action edit
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Razor.LanguageServer.Common.LanguageServerConstants.CodeActions.Default">
+            <summary>
+            Remaps and formats the resolved code action edit
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Common.RazorLSCommon.Resources.File_Externally_Modified">
+            <summary>File was externally modified: {0}</summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.Common.RazorLSCommon.Resources.FormatFile_Externally_Modified(System.Object)">
+            <summary>File was externally modified: {0}</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Common.RazorLSCommon.Resources.Language_Services_Missing_Service">
+            <summary>Razor language services not configured properly, missing language service '{0}'.</summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.Common.RazorLSCommon.Resources.FormatLanguage_Services_Missing_Service(System.Object)">
+            <summary>Razor language services not configured properly, missing language service '{0}'.</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Razor.LanguageServer.Common.RazorLSCommon.Resources.Unknown_ProjectChangeKind">
+            <summary>Unknown ProjectChangeKind {0}</summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.LanguageServer.Common.RazorLSCommon.Resources.FormatUnknown_ProjectChangeKind(System.Object)">
+            <summary>Unknown ProjectChangeKind {0}</summary>
+        </member>
+    </members>
+</doc>

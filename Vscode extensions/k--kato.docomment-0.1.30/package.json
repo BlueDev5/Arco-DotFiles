@@ -1,0 +1,275 @@
+{
+	"name": "docomment",
+	"version": "0.1.30",
+	"publisher": "k--kato",
+	"engines": {
+		"vscode": "^1.61.0"
+	},
+	"displayName": "C# XML Documentation Comments",
+	"description": "Generate C# XML documentation comments for ///",
+	"categories": [
+		"Other"
+	],
+	"galleryBanner": {
+		"color": "#4F87FF",
+		"theme": "light"
+	},
+	"main": "./dist/extension-node",
+	"browser": "./dist/web/extension.js",
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "C# XML Documentation Comments configuration",
+			"properties": {
+				"docomment.syntax": {
+					"type": "string",
+					"enum": [
+						"single",
+						"delimited"
+					],
+					"default": "single",
+					"description": "Comments are single-line comments that start with three slashes (///) (\"single\"), or delimited comments that start with a slash and two stars (/**) (\"delimited\")."
+				},
+				"docomment.activateOnEnter": {
+					"type": "boolean",
+					"default": false,
+					"description": "Press the Enter key to activate a command."
+				},
+				"docomment.advanced": {
+					"type": "object",
+					"description": "User-controllable options.",
+					"properties": {
+						"cs": {
+							"type": "object",
+							"description": "C# options.",
+							"properties": {
+								"namespace": {
+									"type": "object",
+									"properties": {
+										"attributes": {
+											"type": "array",
+											"default": [
+												"summary"
+											],
+											"items": {
+												"attribute": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								},
+								"class": {
+									"type": "object",
+									"properties": {
+										"attributes": {
+											"type": "array",
+											"default": [
+												"summary",
+												"typeparam"
+											],
+											"items": {
+												"attribute": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								},
+								"interface": {
+									"type": "object",
+									"properties": {
+										"attributes": {
+											"type": "array",
+											"default": [
+												"summary",
+												"typeparam"
+											],
+											"items": {
+												"attribute": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								},
+								"struct": {
+									"type": "object",
+									"properties": {
+										"attributes": {
+											"type": "array",
+											"default": [
+												"summary"
+											],
+											"items": {
+												"attribute": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								},
+								"enum": {
+									"type": "object",
+									"properties": {
+										"attributes": {
+											"type": "array",
+											"default": [
+												"summary"
+											],
+											"items": {
+												"attribute": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								},
+								"delegate": {
+									"type": "object",
+									"properties": {
+										"attributes": {
+											"type": "array",
+											"default": [
+												"summary",
+												"param",
+												"typeparam",
+												"returns"
+											],
+											"items": {
+												"attribute": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								},
+								"field": {
+									"type": "object",
+									"properties": {
+										"attributes": {
+											"type": "array",
+											"default": [
+												"summary",
+												"value"
+											],
+											"items": {
+												"attribute": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								},
+								"property": {
+									"type": "object",
+									"properties": {
+										"attributes": {
+											"type": "array",
+											"default": [
+												"summary",
+												"value"
+											],
+											"items": {
+												"attribute": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								},
+								"method": {
+									"type": "object",
+									"properties": {
+										"attributes": {
+											"type": "array",
+											"default": [
+												"summary",
+												"param",
+												"typeparam",
+												"returns"
+											],
+											"items": {
+												"attribute": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								},
+								"event": {
+									"type": "object",
+									"properties": {
+										"attributes": {
+											"type": "array",
+											"default": [
+												"summary"
+											],
+											"items": {
+												"attribute": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"activationEvents": [
+		"onLanguage:csharp",
+		"onLanguage:aspnetcorerazor"
+	],
+	"keywords": [
+		"XML Documentation Comments",
+		"C#",
+		"Blazor"
+	],
+	"dependencies": {},
+	"devDependencies": {
+		"@types/mocha": "^9.0.0",
+		"@types/node": "^16.11.6",
+		"@types/vscode": "^1.61.0",
+		"@types/webpack-env": "^1.16.0",
+		"coveralls": "^3.1.1",
+		"eslint": "^8.1.0",
+		"mocha": "^9.1.3",
+		"mocha-lcov-reporter": "^1.3.0",
+		"nyc": "^15.1.0",
+		"process": "^0.11.10",
+		"ts-loader": "^9.2.2",
+		"typescript": "^4.4.4",
+		"vscode-test": "^1.6.1",
+		"webpack": "^5.61.0",
+		"webpack-cli": "^4.7.0"
+	},
+	"extensionDependencies": [],
+	"scripts": {
+		"vscode:prepublish": "npm run package",
+		"compile": "webpack",
+		"watch": "webpack --watch",
+		"package": "webpack --mode production --devtool hidden-source-map",
+		"coverage_travis": "./node_modules/.bin/nyc ./node_modules/mocha/bin/_mocha -- -R spec --ui tdd ./out/test/**/*.js",
+		"coverage": "./node_modules/.bin/nyc ./node_modules/mocha/bin/_mocha -- -R spec --ui tdd ./out/test/**/*.js"
+	},
+	"icon": "images/docomment.png",
+	"license": "MIT",
+	"homepage": "https://github.com/kasecato/vscode-docomment#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/kasecato/vscode-docomment"
+	},
+	"bugs": {
+		"url": "https://github.com/kasecato/vscode-docomment/issues"
+	},
+	"__metadata": {
+		"id": "d1a2eab4-aa6e-4094-93b3-6a007f60bd9d",
+		"publisherId": "42d9583b-423d-428d-933b-b906585dbaa2",
+		"publisherDisplayName": "Keisuke Kato",
+		"installedTimestamp": 1635569773947
+	}
+}
