@@ -1,0 +1,152 @@
+{
+	"name": "random-theme-switcher",
+	"displayName": "Random Theme Switcher",
+	"description": "A simple extension that randomly choose a theme",
+	"version": "0.2.2",
+	"publisher": "zanza00",
+	"icon": "icon/rts.png",
+	"author": {
+		"name": "Simone Picciani",
+		"email": "zanza00@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/zanza00/random-theme-switcher"
+	},
+	"engines": {
+		"vscode": "^1.23.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"random",
+		"theme switcher",
+		"theme changer",
+		"startup"
+	],
+	"activationEvents": [
+		"onCommand:randomThemeSwitcher.switchTheme",
+		"onCommand:randomThemeSwitcher.copyInstalledThemes",
+		"*"
+	],
+	"main": "./dist/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "randomThemeSwitcher.switchTheme",
+				"title": "Random Theme: Switch to a Random Theme"
+			},
+			{
+				"command": "randomThemeSwitcher.copyInstalledThemes",
+				"title": "Random Theme: Copy all installed themes in settings"
+			},
+			{
+				"command": "randomThemeSwitcher.addCurrentTheme",
+				"title": "Random Theme: Add current theme to settings"
+			},
+			{
+				"command": "randomThemeSwitcher.removeCurrentTheme",
+				"title": "Random Theme: Remove current theme from settings"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "randomThemeSwitcher.switchTheme",
+				"key": "ctrl+k ctrl+shift+t",
+				"mac": "cmd+k cmd+shift+t"
+			}
+		],
+		"configuration": {
+			"title": "Random Theme Switcher configuration list",
+			"properties": {
+				"randomThemeSwitcher.switchInterval": {
+					"default": 15,
+					"description": "Interval in minutes for switching theme automatically. Don't forget to set `randomThemeSwitcher.switchMode` to *interval*",
+					"type": "integer",
+					"minimum": 3,
+					"maximum": 1440
+				},
+				"randomThemeSwitcher.themeList": {
+					"title": "theme list",
+					"default": [],
+					"description": "List of themes from which a random one is selected, to populate use the command 'copy installed themes'",
+					"type": "array"
+				},
+				"randomThemeSwitcher.switchMode": {
+					"title": "switch mode",
+					"type": "string",
+					"enum": [
+						"manual",
+						"startup",
+						"daily",
+						"interval",
+						"typing"
+					],
+					"enumDescriptions": [
+						"No automatic switch is performed",
+						"When active it will change theme whenever vscode is opened",
+						"When active it will change theme once a day",
+						"When active it will change theme every `randomThemeSwitcher.switchInterval` minutes",
+						"When active it will change theme every times a keyboard key is pressed"
+					],
+					"description": "Set whether switch automatically the theme at vscode startup, or at daily basis. Remember to reload VSC in order to apply the settings",
+					"default": "startup"
+				},
+				"randomThemeSwitcher.lastSwitchDay": {
+					"title": "last switch day",
+					"type": "number",
+					"description": "Last switch day (used in the switchMode daily)",
+					"scope": "application"
+				},
+				"randomThemeSwitcher.preventReloadThemeList": {
+					"title": "one more time theme list",
+					"type": "array",
+					"description": "Some themes, after they are applied, reload the instance. If they are present in this list the extension will not set a new random theme after they are applied.",
+					"default": [
+						"Material Theme",
+						"Material Theme High Contrast",
+						"Material Theme Darker",
+						"Material Theme Darker High Contrast",
+						"Material Theme Palenight",
+						"Material Theme Palenight High Contrast",
+						"Material Theme Ocean",
+						"Material Theme Ocean High Contrast",
+						"Material Theme Lighter",
+						"Material Theme Lighter High Contrast"
+					]
+				}
+			}
+		}
+	},
+	"scripts": {
+		"package": "vsce package",
+		"publish": "vsce publish",
+		"vscode:prepublish": "webpack --mode production",
+		"webpack": "webpack --mode none",
+		"webpack-dev": "webpack --mode none --watch",
+		"test-compile": "tsc -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^10.12.21",
+		"prettier": "^1.17.0",
+		"ts-loader": "^5.3.3",
+		"tslint": "^5.12.1",
+		"typescript": "^3.3.1",
+		"vsce": "^1.71.0",
+		"vscode": "^1.1.33",
+		"webpack": "^4.30.0",
+		"webpack-cli": "^3.3.0"
+	},
+	"dependencies": {
+		"fp-ts": "^1.17.0"
+	},
+	"__metadata": {
+		"id": "7bba5c82-b010-49c4-8954-24ebc8cd8051",
+		"publisherId": "fce8f3d6-f445-44fd-97b8-ba5488ea1621",
+		"publisherDisplayName": "zanza00",
+		"installedTimestamp": 1636690448544
+	}
+}

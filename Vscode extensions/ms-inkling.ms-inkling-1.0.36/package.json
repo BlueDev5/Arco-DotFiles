@@ -1,0 +1,129 @@
+{
+	"name": "ms-inkling",
+	"displayName": "Inkling",
+	"description": "VS Code language support for the inkling language",
+	"version": "1.0.36",
+	"license": "Refer to LICENSE.md",
+	"homepage": "https://www.bons.ai",
+	"author": {
+		"name": "Microsoft Corporation"
+	},
+	"publisher": "ms-inkling",
+	"engines": {
+		"vscode": "^1.52.0"
+	},
+	"keywords": [
+		"inkling",
+		"ai",
+		"reinforcement"
+	],
+	"categories": [
+		"Programming Languages"
+	],
+	"activationEvents": [
+		"onLanguage:inkling"
+	],
+	"icon": "images/inkling-icon.png",
+	"main": "./out/src/extension",
+	"contributes": {
+		"languages": [
+			{
+				"id": "inkling",
+				"aliases": [
+					"Inkling"
+				],
+				"extensions": [
+					".ink"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "inkling",
+				"scopeName": "source.ink",
+				"path": "./syntaxes/inkling.tmLanguage.json"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Configuration",
+			"properties": {
+				"inkling.enableAllFeatures": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": false,
+					"description": "Enables all inkling features, even those that may not be enabled in the platform."
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "inkling.formatDocument",
+				"title": "Format Document",
+				"category": "Inkling"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"command": "inkling.formatDocument",
+					"title": "Inkling: Format Document",
+					"group": "Inkling",
+					"when": "editorLangId == inkling"
+				}
+			]
+		},
+		"semanticTokenTypes": [
+			{
+				"id": "constant",
+				"description": "constant",
+				"superType": "variable"
+			},
+			{
+				"id": "lesson",
+				"description": "lesson",
+				"superType": "class"
+			},
+			{
+				"id": "objective",
+				"description": "objective",
+				"superType": "class"
+			},
+			{
+				"id": "concept",
+				"description": "concept",
+				"superType": "class"
+			},
+			{
+				"id": "simulator",
+				"description": "simulator",
+				"superType": "function"
+			},
+			{
+				"id": "data",
+				"description": "data",
+				"superType": "function"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run build",
+		"build": "tsc -p ./",
+		"update-vscode": "node ./node_modules/vscode/bin/install",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"typescript": "^4.2.3",
+		"vscode": "^1.1.37"
+	},
+	"dependencies": {
+		"vscode-languageclient": "^7.0.0"
+	},
+	"__metadata": {
+		"id": "1c6de199-2214-4ffc-bbb8-6642edca1ca6",
+		"publisherId": "d76e7fa2-814b-4f67-aac8-899ca45843b0",
+		"publisherDisplayName": "Microsoft",
+		"installedTimestamp": 1636006769097
+	}
+}

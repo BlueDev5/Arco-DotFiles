@@ -1,0 +1,52 @@
+{
+	"name": "coolest-dark",
+	"displayName": "Coolest Dark",
+	"publisher": "mutomboJeanVincent",
+	"author": {
+		"name": "Mutombo jean-vincent",
+		"email": "sigmacool@gmail.com",
+		"url": "https://github.com/coolbeatz71"
+	},
+	"homepage": "https://github.com/coolbeatz71/coolest-dark",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/coolbeatz71/coolest-dark"
+	},
+	"bugs": {
+		"url": "https://github.com/coolbeatz71/coolest-dark/issues"
+	},
+	"icon": "img/icon.png",
+	"keywords": [
+		"flutter",
+		"dark",
+		"coolest",
+		"dart",
+		"theme",
+		"material theme",
+		"One dark",
+		"Bear Theme"
+	],
+	"description": "The coolest dark theme for Dart and Flutter based on One Dark Pro and Bear Theme",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.52.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Coolest Dark",
+				"uiTheme": "vs-dark",
+				"path": "./themes/Coolest Dark-color-theme.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "07fb4963-7985-469f-93f4-0d6a3233909d",
+		"publisherId": "1f79b3ff-e065-4dba-993a-a399ba9b4e1c",
+		"publisherDisplayName": "Mutombo Jean-Vincent",
+		"installedTimestamp": 1625667109376
+	}
+}

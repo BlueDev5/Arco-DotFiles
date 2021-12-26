@@ -1,0 +1,21 @@
+{
+	"messages": [
+		"Yes, Install!",
+		"No, Thanks!",
+		"IntelliCode API Usage Examples Extension was installed previously, but it doesn't seem to be installed anymore. Would you like to reinstall?",
+		"See in Marketplace",
+		"No, Thanks!",
+		"Interested in seeing API usage examples? Try our new IntelliCode API Usage Examples extension! Install it now from the marketplace to get started.",
+		"IntelliCode API Usage Examples Extension was installed successfully."
+	],
+	"keys": [
+		"reInstallGaiaAccept",
+		"reInstallGaiaDecline",
+		"reInstallGaiaPromptMessage",
+		"seeInMarketplace",
+		"reInstallGaiaDecline",
+		"installGaiaPromptMessage",
+		"gaiaInstalledMessage"
+	],
+	"filePath": "apiexamples"
+}

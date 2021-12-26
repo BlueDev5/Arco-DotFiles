@@ -1,0 +1,36 @@
+{
+	"name": "best-dark-themes-pack",
+	"displayName": "Best Dark Themes Pack",
+	"description": "Ultimate pack of dark themes",
+	"version": "1.0.2",
+	"publisher": "thegeoffstevens",
+	"engines": {
+		"vscode": "^1.33.0"
+	},
+	"categories": [
+		"Extension Packs"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/geoffstevens8/best-dark-themes-pack"
+	},
+	"icon": "assets/icon.png",
+	"extensionPack": [
+		"zhuangtongfa.Material-theme",
+		"dracula-theme.theme-dracula",
+		"arcticicestudio.nord-visual-studio-code",
+		"whizkydee.material-palenight-theme",
+		"azemoh.one-monokai",
+		"sdras.night-owl",
+		"EliverLara.andromeda",
+		"rokoroku.vscode-theme-darcula",
+		"jolaleye.horizon-theme-vscode",
+		"wesbos.theme-cobalt2"
+	],
+	"__metadata": {
+		"id": "45137f60-2bb7-43e4-9fa6-ef25afa1f0b9",
+		"publisherId": "f2d878ed-4e5d-4fc9-bab4-d48d4f49ef43",
+		"publisherDisplayName": "thegeoffstevens",
+		"installedTimestamp": 1636604626830
+	}
+}
