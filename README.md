@@ -1,7 +1,7 @@
 # Arco-DotFiles
 My Dotfiles of Arco Linux
 
-## Pre-Requisites
+## Apps Used
 1. Htop
 2. LightDM
 3. lightdm-webkit2-greeter
@@ -13,3 +13,6 @@ My Dotfiles of Arco Linux
 9. neofetch
 10. Thunar(optional)
 11. vscode (optional)
+
+## Vscode Extensions
+To add the extensions, rename the folder to extensions and copy it to ~/.vscode/.
