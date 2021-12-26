@@ -1,0 +1,12 @@
+2021/12/26-11:13:40.441 3 Reusing MANIFEST /home/amogh/.config/google-chrome/Default/Local Storage/leveldb/MANIFEST-000001
+2021/12/26-11:13:40.443 3 Recovering log #179
+2021/12/26-11:13:40.512 3 Reusing old log /home/amogh/.config/google-chrome/Default/Local Storage/leveldb/000179.log 
+2021/12/26-11:34:46.917 c Level-0 table #184: started
+2021/12/26-11:34:47.044 c Level-0 table #184: 18314 bytes OK
+2021/12/26-11:34:47.253 c Delete type=0 #179
+2021/12/26-11:43:44.107 10 Level-0 table #186: started
+2021/12/26-11:43:44.196 10 Level-0 table #186: 22373 bytes OK
+2021/12/26-11:43:44.231 10 Delete type=0 #183
+2021/12/26-12:16:18.638 1a Level-0 table #188: started
+2021/12/26-12:16:18.670 1a Level-0 table #188: 22391 bytes OK
+2021/12/26-12:16:18.707 1a Delete type=0 #185

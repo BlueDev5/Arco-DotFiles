@@ -1,0 +1,10 @@
+2021/12/25-17:52:47.548 3 Reusing MANIFEST /home/amogh/.config/google-chrome/Default/Session Storage/MANIFEST-000001
+2021/12/25-17:52:47.549 3 Recovering log #49
+2021/12/25-17:52:47.550 3 Level-0 table #53: started
+2021/12/25-17:52:47.592 3 Level-0 table #53: 16160 bytes OK
+2021/12/25-17:52:47.593 3 Recovering log #53
+2021/12/25-17:52:47.598 3 Reusing old log /home/amogh/.config/google-chrome/Default/Session Storage/000053.log 
+2021/12/25-17:52:47.641 3 Delete type=0 #49
+2021/12/25-19:26:18.470 25 Level-0 table #55: started
+2021/12/25-19:26:18.503 25 Level-0 table #55: 17022 bytes OK
+2021/12/25-19:26:18.532 25 Delete type=0 #53
