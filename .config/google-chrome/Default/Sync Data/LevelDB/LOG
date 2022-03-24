@@ -1,6 +1,0 @@
-2021/12/26-11:13:41.863 bc5 Reusing MANIFEST /home/amogh/.config/google-chrome/Default/Sync Data/LevelDB/MANIFEST-000001
-2021/12/26-11:13:41.886 bc5 Recovering log #98
-2021/12/26-11:13:42.086 bc5 Reusing old log /home/amogh/.config/google-chrome/Default/Sync Data/LevelDB/000098.log 
-2021/12/26-11:20:48.481 1183 Level-0 table #103: started
-2021/12/26-11:20:48.524 1183 Level-0 table #103: 102240 bytes OK
-2021/12/26-11:20:48.553 1183 Delete type=0 #98
